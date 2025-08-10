@@ -1,0 +1,102 @@
+﻿@model IEnumerable<EMedicineServices.Models.OrderViewModel>
+
+@{
+    ViewData["Title"] = "Listorders";
+}
+
+<style>
+    .h1 {
+        background-color: #10e7f4;
+        color: white;
+        margin-bottom: 20px;
+    }
+</style>
+
+<div id="loader" class="spinner-border text-primary" role="status" style="display: none;">
+    <span class="visually-hidden">Loading...</span>
+</div>
+
+
+<div class="row m-md-3 m-sm-3">
+    <div class="col-xs-5   col-sm-5  col-md-6 "></div>
+    <div class="col-xs-5  col-sm-5 col-md-5 "></div>
+    <div class="col-xs-2  col-sm-2 col-md-1  "><a onclick="showLoader()" class="btn btn-success " asp-controller="Order" asp-action="PreConfirm">Checkout</a></div>
+</div>
+
+<div class="row h1">
+    <div class="col-sm-12 col-md-12 ">
+        <h1 class="text-center">Your Cart</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12  col-sm-12 col-md-12">
+<table class="table">
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Order Id</th>
+            <th>Order Status</th>
+            <th>Name</th>
+            <th>Qty</th>
+            <th>Amount</th>
+            <th>Order Date</th>
+            <th>Options</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            @if (item.o.Order_status == "InCart")
+            {
+                <tr>
+                    <td><img src="@Url.Content(@item.m.ImagePath)" style="width:20%" /></td>
+                    <td>@item.o.Id</td>
+                    <td>@item.o.Order_status</td>
+                    <td>@item.m.Name</td>
+                    <td>@item.o.Order_Qty</td>
+                    <td>@item.o.Order_Amount</td>
+                    <td>@item.o.Ordered_date</td>
+                    <td>
+
+                        <a asp-controller="Order" asp-action="Cancel" asp-route-id="@item.o.Id">
+                                    <i class="fa fa-ban" aria-hidden="true" title="Cancel"></i>
+                            </a> |
+
+
+
+
+                                <a class="text-danger" asp-controller="Order" asp-action="Delete" asp-route-id="@item.o.Id">
+                                    <i class="fa fa-trash" aria-hidden="true" title="Delete"></i>
+                                    </a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script>
+    // Show spinner when data is being loaded
+    function showLoader() {
+        document.getElementById('loader').style.display = 'block';
+    }
+
+    // Hide spinner when loading is complete
+    function hideLoader() {
+        document.getElementById('loader').style.display = 'none';
+    }
+
+    // Example: Simulate loading after 3 seconds
+    setTimeout(hideLoader, 3000); // Hide loader after 3 seconds (simulate loading complete)
+   // showLoader(); // Show loader initially (simulate loading)
+</script>

@@ -1,0 +1,80 @@
+﻿@model IEnumerable<EMDModels.User>
+
+@{
+    ViewData["Title"] = "Listall";
+}
+
+
+<style>
+    h1
+    {
+        background-color: #10e7f4;
+        color:white;
+    }
+</style>
+
+<h1 class="text-center">Registered Users</h1>
+
+<p>
+    <a  asp-controller="User" asp-action="Register">Register New User</a>
+</p>
+<table class="table table-hover table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            @* <th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th> *@
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Roletype)
+            </th>
+           @*  <th>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </th> *@
+            <th>Options</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+           @*  <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td> *@
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Roletype)
+            </td>
+           @*  <td>
+                @Html.DisplayFor(modelItem => item.CreatedDate)
+            </td> *@
+            <td>
+                <a asp-controller="User" asp-action="Edit" asp-route-id="@item.Id">
+                        <i class="fa fa-pencil" aria-hidden="true" title="Edit"></i>
+                    </a> |
+                    <a class="text-info" asp-controller="User" asp-action="Details" asp-route-id="@item.Id">
+                        <i class="fa fa-info-circle" aria-hidden="true" title="Details"></i>
+                    </a> |
+                    <a class="text-danger" asp-controller="User" asp-action="Delete" asp-route-id="@item.Id">
+                        <i class="fa fa-trash" aria-hidden="true" title="Delete"></i>
+                    </a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

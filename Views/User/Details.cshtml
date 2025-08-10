@@ -1,0 +1,54 @@
+﻿@model EMDModels.User
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>User Details</h1>
+
+<div>
+   
+    <hr />
+    <table class="table"  border="1" width="700px">
+        <tr>
+            <td> @Html.DisplayNameFor(model => model.Name)</td>
+            <td> @Html.DisplayFor(model => model.Name)</td>
+
+        </tr>
+
+       @*  <tr>
+            <td> @Html.DisplayNameFor(model => model.Password)</td>
+            <td> @Html.DisplayFor(model => model.Password)</td>
+
+        </tr> *@
+
+        <tr>
+            <td> @Html.DisplayNameFor(model => model.Email)</td>
+            <td> @Html.DisplayFor(model => model.Email)</td>
+
+        </tr>
+
+
+        <tr>
+            <td> @Html.DisplayNameFor(model => model.Address)</td>
+            <td> @Html.DisplayFor(model => model.Address)</td>
+
+        </tr>
+
+        <tr>
+            <td> @Html.DisplayNameFor(model => model.Roletype)</td>
+            <td> @Html.DisplayFor(model => model.Roletype)</td>
+
+        </tr>
+
+        <tr>
+            <td> @Html.DisplayNameFor(model => model.CreatedDate)</td>
+            <td> @Html.DisplayFor(model => model.CreatedDate)</td>
+
+        </tr>
+        
+    </table>
+</div>
+<div>
+    
+    <a asp-action="Listall">Back to List</a>
+</div>

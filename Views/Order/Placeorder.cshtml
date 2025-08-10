@@ -1,0 +1,73 @@
+﻿@model EMDModels.Medicine
+@{
+    ViewData["Title"] = "Placeorder";
+}
+
+<h1 class="text-center">Your Order</h1>
+
+<div class="row">
+    <div class="col-md-4" style="border:1px solid grey">
+        <img src="@Url.Content(Model.ImagePath)" style="width:90%"/>
+    </div>
+    <div class="col-md-8" style="border:1px solid grey;padding:30px;">
+       <span>Name:</span> <h6>@Model.Name</h6>
+       <hr />
+        <Span>Price:</Span><h6>@Model.Price</h6>
+        <hr />
+        <span>Description:</span><h6>@Model.Description</h6>
+        <hr />
+        <span>Expiry Date:</span><h6>@Model.ExpiryDate</h6>
+        <hr />
+        <span id="stock" hidden >@Model.Quantity</span>
+
+
+
+        <form asp-controller="Order" asp-action="OrderNow"  method="post">
+            <span>Qty:</span>
+            <button type="button" id="decrement" class="btn btn-info" onclick="Decrement()">-</button>
+            <input type="text" id="Quantityid" name="Quantity" value="1" min="1" readonly style="width:30px" />
+            <button type="button" id="increment" class="btn btn-info" onclick="Increment()">+</button><br /><br />
+            <span>Amount:</span>
+            <input type="number" id="Amountid" name="Amount" value="@Model.Price" readonly style="width:80px" /><span>PKR</span><br /><br />
+            <input type="hidden" name="Id" value="@Model.Id" />
+            <input type="submit" class="btn btn-info" value="Add to Cart" />
+        </form>
+    </div>
+
+</div>
+
+<script>
+    const inc = document.getElementById('increment');
+    const dec = document.getElementById('decrement');
+    const Qty = document.getElementById('Quantityid');
+    const Amt = document.getElementById('Amountid');
+    const stck = document.getElementById('stock');
+    const Amount = parseInt(Amt.value);
+    function Increment()
+    {
+        
+        if (parseInt(Qty.value) < parseInt(stck.innerHTML)) {
+            Qty.value = parseInt(Qty.value) + 1;
+            Qty.innerHTML = Qty.value;
+        }
+        else 
+        { 
+            alert("Stock is Limited");
+        }
+        Update_Amount();
+    }
+    function Decrement() {
+        if (Qty.value > 1) {
+            Qty.value = parseInt(Qty.value) - 1;
+            Qty.innerHTML = Qty.value;
+            Update_Amount();
+        }
+    }
+        function Update_Amount() { 
+
+            Amt.value = Amount * parseInt(Qty.value);
+
+        }
+
+</script>
+

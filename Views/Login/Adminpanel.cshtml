@@ -1,0 +1,97 @@
+﻿ @using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor Accessor
+
+
+
+
+@{
+    ViewData["Title"] = "Adminpanel";
+}
+<style>
+
+   
+
+.med
+{
+    background-color:darkturquoise;
+    height:200px;
+    padding-top:80px;
+        border-radius: 50%;
+}
+
+    .ord
+    {
+        background-color:coral;
+        height: 200px;
+        padding-top: 80px;
+        border-radius: 50%;
+    }
+
+
+.use
+{
+background-color:cornflowerblue ; 
+height:200px;
+padding-top:80px;
+        border-radius: 50%;
+
+}
+
+    .uselink, .ordlink, .medlink 
+    {
+    display:block;
+    height:100%;
+    width:100%;
+    text-decoration:none;
+    color:black; 
+    font-size:20px;
+   
+    
+    }
+</style>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 mb-8 p-4" >
+            <h1 class="text-center" style="background-color:darkgray;">Adminpanel</h1>
+
+        </div>
+    </div>
+   
+    <div class="row">
+         
+        <div class="col-md-3 text-center med">
+            <a  class="medlink" asp-controller="Med" asp-action="listall">Medicine Managment</a>
+
+        </div>
+
+        <div class="col-md-1"></div>
+
+        <div class="col-md-3 text-center use">
+            <a class="uselink" asp-controller="User" asp-action="listall">User Managment</a>
+
+        </div>
+
+        <div class="col-md-1"></div>
+
+        <div class="col-md-3 text-center ord">
+            <a class="ordlink position-relative" asp-controller="Order" asp-action="listallorders">Order Managment
+                 @{
+                    if (Accessor.HttpContext.Session.GetInt32("count") > 0)
+                    {
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+               
+                        @Accessor.HttpContext.Session.GetInt32("count")
+                    
+                
+
+                <span class="visually-hidden">unread messages</span>
+            </span>
+                    }
+                    }
+            </a>
+        </div>
+
+    </div>
+</div>
+
+

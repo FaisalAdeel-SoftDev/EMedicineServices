@@ -1,0 +1,52 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Shared\Begin.cshtml" />
+    <Content Remove="Views\Shared\invoice.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DinkToPdf" Version="1.0.8" />
+    <PackageReference Include="DinkToPdfCopy" Version="1.0.0" />
+    <PackageReference Include="log4net" Version="2.0.16" />
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.27" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.27">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.27" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.27">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.16" />
+    <PackageReference Include="OpenHtmlToPdf" Version="1.12.0" />
+    <PackageReference Include="RazorDinkToPdf" Version="1.0.1" />
+    <PackageReference Include="RazorLight" Version="2.3.1" />
+  </ItemGroup>
+
+  <!--<ItemGroup>
+    <ProjectReference Include="DataAccess\DataAccess.csproj" />
+    <ProjectReference Include="EMDModels\EMDModels.csproj" />
+    <ProjectReference Include="MedDataService\MedDataService.csproj" />
+  </ItemGroup>-->
+
+  <ItemGroup>
+    <None Include="DataAccess.csproj" />
+    <None Include="EMDModels.csproj" />
+    <None Include="MedDataService.csproj" />
+    <None Include="Views\Shared\Begin.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="htmltopdfserve\" />
+  </ItemGroup>
+
+</Project>

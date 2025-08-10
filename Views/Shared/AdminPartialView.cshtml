@@ -1,0 +1,28 @@
+﻿ @using Microsoft.AspNetCore.Http;
+@inject IHttpContextAccessor Accessor
+
+
+@{
+
+    if (Accessor.HttpContext.Session.GetString("name") != null && Accessor.HttpContext.Session.GetString("name").ToString() == "Admin")
+    {
+        <a class="nav-link position-relative" asp-controller="login" asp-action="Adminpanel">
+            Admin Panel
+           
+               @if (Accessor.HttpContext.Session.GetInt32("count") > 0)
+                {
+                <span class="position-absolute top-0 start-99 translate-middle badge  rounded-pill bg-danger">
+               <img src="~/Images/pics/notification.png"  style="width:15px"/>
+                     @Accessor.HttpContext.Session.GetInt32("count")
+               
+                
+                <span class="visually-hidden">unread messages</span>
+            </span> }
+        </a>
+       
+    }
+    else if (Accessor.HttpContext.Session.GetString("name") != null)
+    {
+        <a class="nav-link" asp-controller="Order" asp-action="Listorders">Your Orders</a>
+    }
+}

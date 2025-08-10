@@ -1,0 +1,86 @@
+﻿
+@model EMDModels.Medicine
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Update Medicine</h1>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-controller="Med" asp-action="Edit" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <input asp-for="Id" class="form-control"  hidden/>
+            </div>
+
+            <div class="form-group">
+                <input asp-for="ImagePath" class="form-control" hidden />
+            </div>
+
+
+            <div class="form-group">
+                <input asp-for="CreatedDate" class="form-control" hidden />
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+
+
+
+
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Quantity" class="control-label"></label>
+                <input asp-for="Quantity" class="form-control" />
+                <span asp-validation-for="Quantity" class="text-danger"></span>
+            </div>
+
+            <div>
+                <img src="@Url.Content(Model.ImagePath)"  width="50%"/>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Choose Image</label>
+                <input type="file" name="filename"  class="form-control" />
+                <span asp-validation-for="filename" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                
+                <label class="control-label">Change Expiry Date</label>
+                <input type="date" asp-for="ExpiryDate" required class="form-control" />
+                <span asp-validation-for="ExpiryDate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Update" class="btn btn-primary mt-3" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-controller="Med" asp-action="Listall">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

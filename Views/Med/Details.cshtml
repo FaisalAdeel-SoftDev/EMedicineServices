@@ -1,0 +1,110 @@
+﻿
+@model EMDModels.Medicine
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h5>Medicine Details </h5>
+
+<style>
+    td
+    {
+
+    }
+</style>
+
+<div>
+
+    <hr />
+    <table width="500px" border="1" class="table" align="center">
+
+        <tr>
+            @*<th>
+            @Html.DisplayNameFor(model => model.Image_Path)
+            </th>*@
+
+            <td colspan="2" class="text-center ">
+                <img src="@Url.Content(Model.ImagePath)" width="400px" alt="N/A" />
+
+            </td>
+
+        </tr>
+
+
+
+
+
+        <tr>
+            <th class="text-center ">
+                @Html.DisplayNameFor(model => model.Name)
+
+            </th>
+            <td class="text-center ">
+                @Html.DisplayFor(model => model.Name)
+            </td>
+        </tr>
+
+
+
+        <tr>
+            <th class="text-center ">
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+
+            <td class="text-center ">
+                @Html.DisplayFor(model => model.Description)
+            </td>
+        </tr>
+
+
+
+        <tr>
+            <th class="text-center ">
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+
+            <td class="text-center ">
+                @Html.DisplayFor(model => model.Price)
+            </td>
+        </tr>
+
+
+
+        <tr>
+            <th class="text-center ">
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+
+            <td class="text-center ">
+                @Html.DisplayFor(model => model.Quantity)
+            </td>
+
+        </tr>
+
+
+
+
+        <tr>
+            <th class="text-center ">
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </th>
+
+            <td class="text-center ">
+                @Html.DisplayFor(model => model.CreatedDate)
+            </td>
+        </tr>
+
+        <tr>
+            <th class="text-center ">
+                @Html.DisplayNameFor(model => model.ExpiryDate)
+            </th>
+
+            <td class="text-center ">
+                @Html.DisplayFor(model => model.ExpiryDate)
+            </td>
+        </tr>
+
+
+    </table>
+</div>

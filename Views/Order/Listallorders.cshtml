@@ -1,0 +1,116 @@
+﻿@model IEnumerable<EMedicineServices.Models.OrderViewModelAll>
+@{
+    ViewData["Title"] = "Listallorders";
+}
+
+
+<style>
+    h1 {
+        background-color: #10e7f4;
+        color: white;
+        margin-bottom:20px;
+    }
+</style>
+<h1 class="text-center">List of all orders</h1>
+
+
+<table class="table">
+    <thead>
+       
+        <tr>
+            <th>Image</th>
+            <th>Order Id</th>
+            <th>Order by</th>
+            <th>Order Status</th>
+            <th>Name</th>
+            <th>Qty</th>
+            <th>Amount</th>
+            <th>Order Date</th>
+            <th>Options</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+        @foreach (var item in Model)
+        {
+         
+                <tr>
+                <td><img src="@Url.Content(@item.m.ImagePath)" style="width:20%" /></td>
+                <td>@item.o.Id</td>
+                <td>@item.u.Name</td>
+                <td>
+                @if(@item.o.Order_status=="Pending")
+                {
+                <span class="bg-danger"> @item.o.Order_status</span>
+                }
+                else
+                {
+                <span> @item.o.Order_status</span>
+                }
+                </td>
+                <td>@item.m.Name</td>
+                <td>@item.o.Order_Qty</td>
+                <td>@item.o.Order_Amount</td>
+                <td>@item.o.Ordered_date.Value.ToShortDateString()</td>
+                <td>
+                    @if (@item.o.Order_status != "InCart")
+                    {
+
+
+                        <a asp-controller="Order" asp-action="Admin_Cancel" asp-route-id="@item.o.Id">
+                            <i class="fa fa-ban" aria-hidden="true" title="Cancel"></i>
+
+                        </a>
+                        <span>|</span>
+                        if (@item.o.Order_status == "InCart" || @item.o.Order_status == "Pending")
+                        {
+                            <a class="text-success" asp-controller="Order" asp-action="Admin_Approve" asp-route-id="@item.o.Id">
+                                <i class="fa fa-check" aria-hidden="true" title="Approve"></i>
+
+                            </a>
+
+                        }
+                        <span>|</span>
+                        <a class="text-danger" asp-controller="Order" asp-action="Admin_Delete" asp-route-id="@item.o.Id">
+                            <i class="fa fa-trash" aria-hidden="true" title="Delete"></i>
+                        </a>
+                    }
+                </td>
+            </tr>
+        }
+        
+    </tbody>
+</table>
+
+
+
+<div>
+    <nav aria-label="Page navigation">
+        <ul class="pagination">
+            @if (ViewBag.HasPrevious)
+            {
+                <li class="page-item">
+                    <a class="page-link" href="@Url.Action("Listallorders", new { pageNumber = ViewBag.PageNumber - 1, pageSize = ViewBag.PageSize })" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+            }
+            @for (int i = 1; i <= ViewBag.TotalPages; i++)
+            {
+                <li class="page-item @(i == ViewBag.PageNumber ? "active" : "")">
+                    <a class="page-link" href="@Url.Action("Listallorders", new { pageNumber = i, pageSize = ViewBag.PageSize })">@i</a>
+                </li>
+            }
+            @if (ViewBag.HasNext)
+            {
+                <li class="page-item">
+                    <a class="page-link" href="@Url.Action("Listallorders", new { pageNumber = ViewBag.PageNumber + 1, pageSize = ViewBag.PageSize })" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            }
+        </ul>
+    </nav>
+</div>

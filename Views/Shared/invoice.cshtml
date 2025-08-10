@@ -1,0 +1,149 @@
+﻿@model IEnumerable<EMedicineServices.Models.OrderViewModelAll>
+
+
+@{
+    ViewData["Title"] = "PreConfirm";
+}
+<html>
+
+    <head>
+        <link rel="stylesheet"  src="~/css/bootstrap.css"/>
+    </head>
+    <body>
+<div class="container" style="border:1px solid darkblue">
+    <div class="row">
+        <div class="col-md-4 " style="background-color:black;color:white;padding-top:10px;">
+
+            <img src="~/Images/pics/logo.png " /><span>  EMEDICINE</span>
+        </div>
+        <div class="col-md-4 "></div>
+        <div class="col-md-4 " style="background-color:#10e7f4;color:white"><h1>Invoice</h1></div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <span>Invoice Number: @Model.FirstOrDefault().o.Id</span><br />
+            <span>Dated:@DateTime.Now.ToShortDateString() </span>
+        </div>
+        <div class="col-md-4 "></div>
+        <div class="col-md-4 "></div>
+        <hr />
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <p>From:</p>
+            <p><b>Company Name</b>:<span> Emedicine</span></p>
+            <p><b>Phone</b>:<span> 051-4472446 </span></p>
+            <p><b>Email</b>:<span> emed253@gmail.com</span></p>
+        </div>
+
+        <div class="col-md-4 "></div>
+        <div class="col-md-4">
+            <p>To:</p>
+            <p><b>Customer Name</b>:  @Model.FirstOrDefault().u.Name</p>
+            <p><b>Email</b>:  @Model.FirstOrDefault().u.Email</p>
+            <p><b>Address</b>:  @Model.FirstOrDefault().u.Address</p>
+        </div>
+        <hr />
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+
+
+
+
+            <table class="table" style="margin-bottom:100px">
+                <thead>
+                    <tr>
+
+                        <th>Name</th>
+
+                        <th>Qty</th>
+                        <th>Price(PKR)</th>
+                        <th>Amount(PKR)</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        int total = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        @if (item.o.Order_status == "InCart")
+                        {
+                            <tr>
+
+                                <td>@item.m.Name</td>
+
+                                <td>@item.o.Order_Qty</td>
+                                <td>@item.m.Price</td>
+                                @{
+                                    int amount = item.m.Price.GetValueOrDefault() * item.o.Order_Qty.GetValueOrDefault();
+                                    total = total + amount;
+                                }
+                                <td>@amount</td>
+
+
+
+
+
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+
+
+
+        </div>
+        <hr />
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <p>Terms and Conditions:</p>
+        </div>
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <p>Subtotal:<span style="margin-left:200px;">@total</span></p>
+            <hr />
+            <p>Discount:</p>
+            <hr />
+            <p>Tax::</p>
+            <hr />
+            <p>Total:<span style="margin-left:225px;">@total</span></p>
+
+        </div>
+        <hr />
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4"></div>
+        <div class="col-md-4" style="background-color:black;color:white;">
+
+
+            <p>
+                Total:
+                <span style="margin-left:220px;"> @total</span>
+            </p>
+
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+</div>
+
+</body>
+
+</html>

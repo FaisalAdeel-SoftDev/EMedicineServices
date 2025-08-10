@@ -1,0 +1,69 @@
+﻿@model IEnumerable<EMedicineServices.Models.OrderViewModel>
+
+@{
+    ViewData["Title"] = "Listorders";
+}
+
+<style>
+    h1 {
+        background-color: #10e7f4;
+        color: white;
+        margin-bottom:20px;
+    }
+</style>
+
+<h1 class="text-center">Your Orders</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Order Id</th>
+            <th>Order Status</th>
+            <th>Name</th>
+            <th>Qty</th>
+            <th>Amount</th>
+            <th>Order Date</th>
+            <th>Options</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+            @if (item.o.Order_status != "InCart")
+            {
+                <tr>
+                    <td><img src="@Url.Content(@item.m.ImagePath)" style="width:20%" /></td>
+                    <td>@item.o.Id</td>
+                    <td>@item.o.Order_status</td>
+                    <td>@item.m.Name</td>
+                    <td>@item.o.Order_Qty</td>
+                    <td>@item.o.Order_Amount</td>
+                    <td>@item.o.Ordered_date</td>
+                    <td>
+
+                        @if (item.o.Order_status == "Cancelled")
+                        {
+                            <s><a asp-controller="Order" asp-action="Cancel" asp-route-id="@item.o.Id" style="pointer-events: none;cursor: default; "><i class="fa fa-ban" aria-hidden="true" title="Cancel"></i></a></s>
+                            <span>|</span>
+                        }
+                        else
+                        {
+
+                            <a asp-controller="Order" asp-action="Cancel" asp-route-id="@item.o.Id"><i class="fa fa-ban" aria-hidden="true" title="Cancel"></i></a>
+                                <span>|</span>
+                            
+                        }
+                        @if (item.o.Order_status == "InCart")
+                        {
+                            <a asp-controller="Order" asp-action="Confirm" asp-route-id="@item.o.Id"><i class="fa fa-check" aria-hidden="true" title="Approve"></i></a>
+                            <span>|</span>
+                        }
+                        <a class="text-danger" asp-controller="Order" asp-action="Delete" asp-route-id="@item.o.Id"><i class="fa fa-trash" aria-hidden="true" title="Delete"></i></a>
+            </td>
+        </tr>
+        }
+}
+    </tbody>
+</table>
