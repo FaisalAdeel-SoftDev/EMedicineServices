@@ -18,7 +18,7 @@ There are two kinds of users:
 ## ⚙️ Project Setup Configurations
 
 **Step 1:**  
-After cloning the project into Visual Studio, locate the file **DatabaseCreation.sql** and run the script in SQL Server to create a database named **[EMED]**.
+After cloning the project into Visual Studio, locate the file **DatabaseCreation** and run the script in SQL Server to create a database named **[EMED]**.
 
 **Step 2:**  
 After database creation, open **appsettings.json** and add the name of your SQL Server in the connection string.
