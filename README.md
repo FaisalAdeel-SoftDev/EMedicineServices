@@ -1,4 +1,4 @@
-<marquee>🚀 Welcome to EMEDICINE PROJECT 🚀</marquee>
+<h1 align="center">🚀 Welcome to EMEDICINE PROJECT 🚀</h1>
 
 
 Project Introduction:
