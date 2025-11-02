@@ -1,12 +1,4 @@
-<p align="center">
-  <img src="https://raw.githubusercontent.com/yourusername/yourrepo/main/animated-text.svg" alt="Sliding Text">
-</p>
-<svg xmlns="http://www.w3.org/2000/svg" width="500" height="50">
-  <text x="0" y="35" font-size="24" fill="blue">
-    <animate attributeName="x" from="500" to="-200" dur="5s" repeatCount="indefinite" />
-    🚀 Welcome to EMEDICINE PROJECT 🚀
-  </text>
-</svg>
+<marquee>🚀 Welcome to EMEDICINE PROJECT 🚀</marquee>
 
 
 Project Introduction:
