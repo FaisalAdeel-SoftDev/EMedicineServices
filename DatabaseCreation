@@ -1,0 +1,268 @@
+Step1:
+Create Database [EMED]
+Step2:
+USE [EMED]
+GO
+/****** Object:  Table [dbo].[Medicines]    Script Date: 11/2/2025 11:28:16 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Medicines](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](max) NULL,
+	[Description] [nvarchar](max) NULL,
+	[Price] [int] NULL,
+	[Quantity] [int] NULL,
+	[Image_Path] [nvarchar](max) NULL,
+	[Created_Date] [datetime] NULL,
+	[Expiry_Date] [datetime] NULL,
+ CONSTRAINT [PK_Medicines] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Orders]    Script Date: 11/2/2025 11:28:16 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Orders](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Customer_Id] [int] NULL,
+	[Ordered_date] [datetime] NULL,
+	[Order_status] [nvarchar](50) NULL,
+	[Order_deliver_address] [nvarchar](max) NULL,
+	[Order_Amount] [int] NULL,
+	[Order_Qty] [int] NULL,
+	[Med_Id] [int] NULL,
+ CONSTRAINT [PK_Orders] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Users]    Script Date: 11/2/2025 11:28:16 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Users](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](max) NULL,
+	[Password] [nvarchar](100) NULL,
+	[Email] [nvarchar](max) NULL,
+	[Address] [nvarchar](max) NULL,
+	[Roletype] [nvarchar](50) NULL,
+	[Created_Date] [datetime] NULL,
+ CONSTRAINT [PK_Users] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[Medicines] ON 
+GO
+INSERT [dbo].[Medicines] ([Id], [Name], [Description], [Price], [Quantity], [Image_Path], [Created_Date], [Expiry_Date]) VALUES (1003, N'Panadol', N'For fever and pain', 25, 11, N'~/Images/panadol0c4e1ae2-ed9c-498a-99e3-1f8f58d7a663.jpg', CAST(N'2024-02-26T22:40:06.120' AS DateTime), CAST(N'2026-02-11T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[Medicines] ([Id], [Name], [Description], [Price], [Quantity], [Image_Path], [Created_Date], [Expiry_Date]) VALUES (1004, N'Brufen', N'For fever and pain', 20, 0, N'~/Images/Brufenf37b5c66-6345-4c55-bc35-00a71e15999d.jpg', CAST(N'2024-02-26T22:43:47.130' AS DateTime), CAST(N'2026-06-09T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[Medicines] ([Id], [Name], [Description], [Price], [Quantity], [Image_Path], [Created_Date], [Expiry_Date]) VALUES (1006, N'Panadol 10mg', N'For fever and pain', 10, 9, N'~/Images/panadol7c256a59-21fa-484d-877e-95f81da93f94.jpg', CAST(N'2024-02-28T18:45:00.447' AS DateTime), CAST(N'2025-10-28T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[Medicines] ([Id], [Name], [Description], [Price], [Quantity], [Image_Path], [Created_Date], [Expiry_Date]) VALUES (1007, N'Mytica', N'For asthma and allergy', 200, 12, N'~/Images/Myticafd935928-d69f-47e5-ae36-fe26366bd991.jpg', CAST(N'2024-03-03T14:29:45.890' AS DateTime), CAST(N'2026-02-03T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[Medicines] ([Id], [Name], [Description], [Price], [Quantity], [Image_Path], [Created_Date], [Expiry_Date]) VALUES (1008, N'Cedrox', N'For asthma and allergy', 230, 25, N'~/Images/Cedrox6d83b975-b005-40ae-add5-09ae19aecd74.png', CAST(N'2024-03-03T14:31:46.557' AS DateTime), CAST(N'2026-06-09T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[Medicines] ([Id], [Name], [Description], [Price], [Quantity], [Image_Path], [Created_Date], [Expiry_Date]) VALUES (1009, N'Calpol', N'For fever and pain', 230, 10, N'~/Images/Calpol6372fe2bc-b7c8-4141-ac5a-f0c7115749e6.jpg', CAST(N'2024-03-03T15:16:28.633' AS DateTime), CAST(N'2026-02-10T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[Medicines] ([Id], [Name], [Description], [Price], [Quantity], [Image_Path], [Created_Date], [Expiry_Date]) VALUES (1010, N'Disprin', N'For fever and pain', 25, 10, N'~/Images/disprin155d170b-750f-425b-b280-7da376e69744.jpg', CAST(N'2024-03-05T07:19:27.213' AS DateTime), CAST(N'2026-07-08T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[Medicines] ([Id], [Name], [Description], [Price], [Quantity], [Image_Path], [Created_Date], [Expiry_Date]) VALUES (1011, N'Vegan Capsule', N'For fever and pain', 300, 1000, N'~/Images/Veganbd43fb2d-1211-4018-bee7-a71729a84a9c.jpg', CAST(N'2024-03-06T10:06:23.100' AS DateTime), CAST(N'2026-06-09T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[Medicines] ([Id], [Name], [Description], [Price], [Quantity], [Image_Path], [Created_Date], [Expiry_Date]) VALUES (2010, N'Zindex', N'For Pain and Fever', 300, 98, N'~/Images/Cedrox3215cacd-d4f6-44f5-bb51-a64d9cc44ed4.png', CAST(N'2024-03-20T14:31:10.823' AS DateTime), CAST(N'2026-06-06T00:00:00.000' AS DateTime))
+GO
+SET IDENTITY_INSERT [dbo].[Medicines] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Orders] ON 
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (12, 3, CAST(N'2024-03-04T16:41:59.137' AS DateTime), N'Approved:preparing delivery', N'S#3,H#1234,Syed Gul Road,New Shakrial,Rawalpindi', 400, 2, 1007)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (13, 3, CAST(N'2024-03-04T16:42:11.373' AS DateTime), N'Approved:preparing delivery', N'S#3,H#1234,Syed Gul Road,New Shakrial,Rawalpindi', 40, 2, 1004)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (14, 3, CAST(N'2024-03-04T17:36:38.730' AS DateTime), N'Cancelled', N'S#3,H#1234,Syed Gul Road,New Shakrial,Rawalpindi', 230, 1, 1008)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (16, 3, CAST(N'2024-03-05T11:14:19.430' AS DateTime), N'Approved:preparing delivery', N'S#3,H#1234,Syed Gul Road,New Shakrial,Rawalpindi', 75, 3, 1010)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (22, 3, CAST(N'2024-03-05T18:08:11.123' AS DateTime), N'Approved:preparing delivery', N'S#3,H#1234,Syed Gul Road,New Shakrial,Rawalpindi', 200, 1, 1007)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (26, 3, CAST(N'2024-03-05T18:38:24.323' AS DateTime), N'InCart', N'S#3,H#1234,Syed Gul Road,New Shakrial,Rawalpindi', 460, 2, 1009)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (31, 1013, CAST(N'2024-03-06T15:31:13.490' AS DateTime), N'Approved:preparing delivery', N'St#2,H#7,Rajatown,Rwp', 230, 1, 1009)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (32, 1013, CAST(N'2024-03-06T15:33:11.090' AS DateTime), N'Approved:preparing delivery', N'St#2,H#7,Rajatown,Rwp', 600, 2, 1011)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (34, 1013, CAST(N'2024-03-06T15:57:51.357' AS DateTime), N'Pending', N'St#2,H#7,Rajatown,Rwp', 20, 2, 1006)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (40, 1011, CAST(N'2024-03-06T17:50:23.510' AS DateTime), N'Pending', N'St#2,H#7,Rajatown,Rwp', 1150, 5, 1009)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (41, 1011, CAST(N'2024-03-06T17:59:14.557' AS DateTime), N'Pending', N'St#2,H#7,Rajatown,Rwp', 50, 2, 1010)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (42, 1011, CAST(N'2024-03-06T18:02:16.963' AS DateTime), N'Pending', N'St#2,H#7,Rajatown,Rwp', 30, 3, 1006)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (43, 1011, CAST(N'2024-03-07T10:18:24.763' AS DateTime), N'Pending', N'St#2,H#7,Rajatown,Rwp', 125, 5, 1010)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (44, 1011, CAST(N'2024-03-07T13:18:02.160' AS DateTime), N'Cancelled', N'St#2,H#7,Rajatown,Rwp', 25, 1, 1010)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (45, 1011, CAST(N'2024-03-07T13:36:03.047' AS DateTime), N'Cancelled', N'St#2,H#7,Rajatown,Rwp', 690, 3, 1009)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (1003, 1011, CAST(N'2024-03-11T17:09:31.997' AS DateTime), N'Pending', N'St#2,H#7,Rajatown,Rwp', 1025, 41, 1010)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (1004, 1011, CAST(N'2024-03-11T17:20:49.133' AS DateTime), N'Pending', N'St#2,H#7,Rajatown,Rwp', 300, 1, 1011)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (1005, 2011, CAST(N'2024-03-11T20:36:18.973' AS DateTime), N'Pending', N'St#2,H#7,Rajatown,Rwp', 800, 4, 1007)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (1006, 2011, CAST(N'2024-03-11T20:42:37.473' AS DateTime), N'Pending', N'St#2,H#7,Rajatown,Rwp', 600, 2, 1011)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (1007, 2011, CAST(N'2024-03-11T20:44:32.340' AS DateTime), N'Pending', N'St#2,H#7,Rajatown,Rwp', 50, 2, 1010)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (1008, 2011, CAST(N'2024-03-11T20:47:27.183' AS DateTime), N'Pending', N'St#2,H#7,Rajatown,Rwp', 690, 3, 1008)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (1009, 2011, CAST(N'2024-03-11T20:49:18.217' AS DateTime), N'Cancelled', N'St#2,H#7,Rajatown,Rwp', 20, 1, 1004)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (1010, 1011, CAST(N'2024-03-12T10:11:03.887' AS DateTime), N'Pending', N'St#2,H#7,Rajatown,Rwp', 40, 2, 1004)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (1011, 1011, CAST(N'2024-03-12T10:13:34.630' AS DateTime), N'Pending', N'St#2,H#7,Rajatown,Rwp', 1500, 5, 1011)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (1013, 1008, CAST(N'2024-03-12T12:08:19.340' AS DateTime), N'Pending', N'St#2,H#7,Rajatown,Rwp', 50, 2, 1010)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (1014, 2011, CAST(N'2024-03-12T12:26:53.643' AS DateTime), N'Pending', N'St#2,H#7,Rajatown,Rwp', 200, 1, 1007)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (1015, 2011, CAST(N'2024-03-12T12:43:23.873' AS DateTime), N'Pending', N'St#2,H#7,Rajatown,Rwp', 300, 1, 1011)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (1016, 1011, CAST(N'2024-03-12T15:22:13.647' AS DateTime), N'Pending', N'St#2,H#7,Rajatown,Rwp', 75, 3, 1010)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (1017, 1010, CAST(N'2024-03-13T10:13:33.947' AS DateTime), N'InCart', N'St#2,H#7,Rajatown,Rwp', 75, 3, 1010)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (1018, 2011, CAST(N'2024-03-13T10:43:40.240' AS DateTime), N'Pending', N'St#2,H#7,Rajatown,Rwp', 460, 2, 1009)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (1019, 2011, CAST(N'2024-03-13T10:44:27.097' AS DateTime), N'Pending', N'St#2,H#7,Rajatown,Rwp', 75, 3, 1010)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (1020, 1007, CAST(N'2024-03-13T11:17:12.387' AS DateTime), N'Pending', N'St#12,H#7,Rajatown,Rwp', 100, 4, 1010)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (1021, 1007, CAST(N'2024-03-13T11:17:26.753' AS DateTime), N'Pending', N'St#12,H#7,Rajatown,Rwp', 300, 1, 1011)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (1022, 2011, CAST(N'2024-03-13T11:55:23.640' AS DateTime), N'Pending', N'St#2,H#7,Rajatown,Rwp', 690, 3, 1009)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (1023, 2011, CAST(N'2024-03-13T11:57:34.823' AS DateTime), N'Pending', N'St#2,H#7,Rajatown,Rwp', 300, 1, 1011)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (1024, 2011, CAST(N'2024-03-13T12:00:30.113' AS DateTime), N'Pending', N'St#2,H#7,Rajatown,Rwp', 300, 1, 1011)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (1025, 2011, CAST(N'2024-03-13T12:13:34.987' AS DateTime), N'Pending', N'St#2,H#7,Rajatown,Rwp', 600, 3, 1007)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (1026, 1011, CAST(N'2024-03-13T12:22:01.377' AS DateTime), N'Pending', N'St#2,H#7,Rajatown,Rwp', 200, 1, 1007)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (1027, 1011, CAST(N'2024-03-13T12:22:43.570' AS DateTime), N'Pending', N'St#2,H#7,Rajatown,Rwp', 230, 1, 1008)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (1028, 1011, CAST(N'2024-03-13T12:23:21.310' AS DateTime), N'Pending', N'St#2,H#7,Rajatown,Rwp', 300, 1, 1011)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (1029, 1011, CAST(N'2024-03-13T12:24:40.100' AS DateTime), N'Pending', N'St#2,H#7,Rajatown,Rwp', 10, 1, 1006)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (1030, 1011, CAST(N'2024-03-13T12:24:49.897' AS DateTime), N'Pending', N'St#2,H#7,Rajatown,Rwp', 300, 1, 1011)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (1031, 1011, CAST(N'2024-03-13T12:24:57.500' AS DateTime), N'Pending', N'St#2,H#7,Rajatown,Rwp', 200, 1, 1007)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (1032, 1011, CAST(N'2024-03-13T12:25:07.987' AS DateTime), N'Pending', N'St#2,H#7,Rajatown,Rwp', 230, 1, 1008)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (1034, 1011, CAST(N'2024-03-13T12:25:34.437' AS DateTime), N'Pending', N'St#2,H#7,Rajatown,Rwp', 25, 1, 1010)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (1035, 1011, CAST(N'2024-03-13T12:37:09.310' AS DateTime), N'Pending', N'St#2,H#7,Rajatown,Rwp', 300, 1, 1011)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (1036, 2011, CAST(N'2024-03-13T12:39:23.757' AS DateTime), N'Pending', N'St#2,H#7,Rajatown,Rwp', 460, 2, 1009)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (1037, 2011, CAST(N'2024-03-13T14:09:18.123' AS DateTime), N'Pending', N'St#2,H#7,Rajatown,Rwp', 460, 2, 1008)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (1038, 2011, CAST(N'2024-03-13T15:05:58.260' AS DateTime), N'Pending', N'St#2,H#7,Rajatown,Rwp', 25, 1, 1010)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (1039, 2011, CAST(N'2024-03-13T15:09:00.843' AS DateTime), N'Pending', N'St#2,H#7,Rajatown,Rwp', 300, 1, 1011)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (1040, 2011, CAST(N'2024-03-13T15:09:05.233' AS DateTime), N'Pending', N'St#2,H#7,Rajatown,Rwp', 75, 3, 1010)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (1041, 2011, CAST(N'2024-03-13T15:09:12.380' AS DateTime), N'Pending', N'St#2,H#7,Rajatown,Rwp', 460, 2, 1009)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (1042, 2011, CAST(N'2024-03-13T15:09:20.703' AS DateTime), N'Pending', N'St#2,H#7,Rajatown,Rwp', 920, 4, 1008)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (1043, 2011, CAST(N'2024-03-13T15:09:26.560' AS DateTime), N'Pending', N'St#2,H#7,Rajatown,Rwp', 200, 1, 1007)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (1044, 2011, CAST(N'2024-03-13T15:09:33.617' AS DateTime), N'Pending', N'St#2,H#7,Rajatown,Rwp', 10, 1, 1006)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (1045, 2011, CAST(N'2024-03-13T15:09:42.460' AS DateTime), N'Pending', N'St#2,H#7,Rajatown,Rwp', 100, 5, 1004)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (1046, 2011, CAST(N'2024-03-13T15:09:51.170' AS DateTime), N'Pending', N'St#2,H#7,Rajatown,Rwp', 75, 3, 1003)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (1077, 1011, CAST(N'2024-03-14T12:23:33.043' AS DateTime), N'Pending', N'St#2,H#7,Rajatown,Rwp', 50, 2, 1010)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (1078, 1011, CAST(N'2024-03-14T11:20:59.680' AS DateTime), N'Pending', N'St#2,H#7,Rajatown,Rwp', 230, 1, 1009)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (1079, 1011, CAST(N'2024-03-14T12:23:56.043' AS DateTime), N'Pending', N'St#2,H#7,Rajatown,Rwp', 600, 2, 1011)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (1080, 1011, CAST(N'2024-03-14T12:25:28.923' AS DateTime), N'Pending', N'St#2,H#7,Rajatown,Rwp', 460, 2, 1008)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (1081, 1011, CAST(N'2024-03-14T12:26:39.653' AS DateTime), N'Pending', N'St#2,H#7,Rajatown,Rwp', 20, 2, 1006)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (1082, 1011, CAST(N'2024-03-18T10:13:01.240' AS DateTime), N'Pending', N'St#2,H#7,Rajatown,Rwp', 75, 3, 1010)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (1083, 1011, CAST(N'2024-03-18T10:15:56.607' AS DateTime), N'Pending', N'St#2,H#7,Rajatown,Rwp', 1610, 7, 1009)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (1084, 1011, CAST(N'2024-03-14T14:36:06.110' AS DateTime), N'Pending', N'St#2,H#7,Rajatown,Rwp', 400, 2, 1007)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (1085, 1011, CAST(N'2024-03-18T10:24:16.843' AS DateTime), N'Pending', N'St#2,H#7,Rajatown,Rwp', 900, 3, 1011)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (1086, 1011, CAST(N'2024-03-14T14:48:16.323' AS DateTime), N'Pending', N'St#2,H#7,Rajatown,Rwp', 230, 1, 1008)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (1087, 1011, CAST(N'2024-03-20T14:46:56.187' AS DateTime), N'Approved:preparing delivery', N'St#2,H#7,Rajatown,Lahore', 600, 2, 2010)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (1088, 1011, CAST(N'2024-03-26T15:32:57.687' AS DateTime), N'Approved:preparing delivery', N'St#2,H#7,Rajatown,Lahore', 220, 11, 1004)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (1091, 2015, CAST(N'2025-05-31T18:16:53.963' AS DateTime), N'Approved:preparing delivery', N'Gulberg Green,Rawalpindi', 20, 1, 1004)
+GO
+INSERT [dbo].[Orders] ([Id], [Customer_Id], [Ordered_date], [Order_status], [Order_deliver_address], [Order_Amount], [Order_Qty], [Med_Id]) VALUES (1092, 1003, CAST(N'2025-05-31T18:36:07.313' AS DateTime), N'InCart', N'S#3,H#1234,Syed Gul Road,New Shakrial,Rawalpindi', 0, 1, 2010)
+GO
+SET IDENTITY_INSERT [dbo].[Orders] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Users] ON 
+GO
+INSERT [dbo].[Users] ([Id], [Name], [Password], [Email], [Address], [Roletype], [Created_Date]) VALUES (3, N'Akhtar', N'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', N'faisaladeel@gmail.com', N'S#3,H#1234,Syed Gul Road,New Shakrial,Rawalpindi', N'User', CAST(N'2024-02-21T17:01:40.340' AS DateTime))
+GO
+INSERT [dbo].[Users] ([Id], [Name], [Password], [Email], [Address], [Roletype], [Created_Date]) VALUES (1003, N'Faisal', N'8776f108e247ab1e2b323042c049c266407c81fbad41bde1e8dfc1bb66fd267e', N'faisaladeel@gmail.com', N'S#3,H#1234,Syed Gul Road,New Shakrial,Rawalpindi', N'Admin', CAST(N'2024-02-21T17:01:40.340' AS DateTime))
+GO
+INSERT [dbo].[Users] ([Id], [Name], [Password], [Email], [Address], [Roletype], [Created_Date]) VALUES (1004, N'Ali', N'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', N'aamir@gmail.com', N'St#2,H#7,Rajatown,Rwp', N'User', CAST(N'2024-02-29T18:54:05.420' AS DateTime))
+GO
+INSERT [dbo].[Users] ([Id], [Name], [Password], [Email], [Address], [Roletype], [Created_Date]) VALUES (1005, N'Tariq', N'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', N'aamir@gmail.com', N'St#2,H#7,Rajatown,Rwp', N'User', CAST(N'2024-02-29T18:54:09.597' AS DateTime))
+GO
+INSERT [dbo].[Users] ([Id], [Name], [Password], [Email], [Address], [Roletype], [Created_Date]) VALUES (1006, N'Aamir', N'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', N'aamir@gmail.com', N'St#2,H#7,Rajatown,Rwp', N'User', CAST(N'2024-02-29T18:54:15.203' AS DateTime))
+GO
+INSERT [dbo].[Users] ([Id], [Name], [Password], [Email], [Address], [Roletype], [Created_Date]) VALUES (1007, N'Asim', N'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', N'asim@gmail.com', N'St#12,H#7,Rajatown,Rwp', N'User', CAST(N'2024-02-29T18:56:09.827' AS DateTime))
+GO
+INSERT [dbo].[Users] ([Id], [Name], [Password], [Email], [Address], [Roletype], [Created_Date]) VALUES (1008, N'Aslam', N'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', N'asif@gmail.com', N'St#2,H#7,Rajatown,Rwp', N'User', CAST(N'2024-02-29T19:06:38.083' AS DateTime))
+GO
+INSERT [dbo].[Users] ([Id], [Name], [Password], [Email], [Address], [Roletype], [Created_Date]) VALUES (1009, N'Asif', N'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', N'asif@gmail.com', N'St#2,H#7,Rajatown,Rwp', N'User', CAST(N'2024-02-29T19:08:13.123' AS DateTime))
+GO
+INSERT [dbo].[Users] ([Id], [Name], [Password], [Email], [Address], [Roletype], [Created_Date]) VALUES (1010, N'Babar javed', N'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', N'babar@gmail.com', N'St#2,H#7,Rajatown,Rwp', N'User', CAST(N'2024-02-29T19:08:46.970' AS DateTime))
+GO
+INSERT [dbo].[Users] ([Id], [Name], [Password], [Email], [Address], [Roletype], [Created_Date]) VALUES (1011, N'Azlan', N'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', N'faisaladeelonlive@gmail.com', N'St#2,H#7,Rajatown,Lahore', N'User', CAST(N'2024-03-05T09:09:35.377' AS DateTime))
+GO
+INSERT [dbo].[Users] ([Id], [Name], [Password], [Email], [Address], [Roletype], [Created_Date]) VALUES (1012, N'Amar', N'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', N'amar@gmail.com', N'St#2,H#7,Rajatown,Rwp', N'Admin', CAST(N'2024-03-05T10:46:43.217' AS DateTime))
+GO
+INSERT [dbo].[Users] ([Id], [Name], [Password], [Email], [Address], [Roletype], [Created_Date]) VALUES (1013, N'Salman Karim', N'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', N'salman.karim@dpskw.com', N'St#2,H#7,Rajatown,Rwp', N'User', CAST(N'2024-03-06T15:30:48.510' AS DateTime))
+GO
+INSERT [dbo].[Users] ([Id], [Name], [Password], [Email], [Address], [Roletype], [Created_Date]) VALUES (1014, N'Moiz', N'15010448a933d9c3c045e252b5a060a41081e904ec720cad6106a13ce2936a7b', N'amar@gmail.com', N'St#2,H#7,Rajatown,Rwp', N'User', CAST(N'2024-03-06T16:41:02.870' AS DateTime))
+GO
+INSERT [dbo].[Users] ([Id], [Name], [Password], [Email], [Address], [Roletype], [Created_Date]) VALUES (2011, N'Hashir', N'3f08d8fadb4b67fb056623565edbbc2c788091d78fd24cbc473fce3043ce3473', N'faisal.adeel@biz-analytix.com', N'St#2,H#7,Rajatown,FaisalAbad', N'User', CAST(N'2024-03-11T16:49:29.037' AS DateTime))
+GO
+INSERT [dbo].[Users] ([Id], [Name], [Password], [Email], [Address], [Roletype], [Created_Date]) VALUES (2014, N'Mukaram', N'c3f69ce90e2b768b8cd7d67232d80f910dc676accf7c935f2335a2d96d5f27cb', N'mukaram@gmail.com', N'St#2,H#7,Rajatown,Islamabad', N'User', CAST(N'2024-03-20T12:13:16.263' AS DateTime))
+GO
+INSERT [dbo].[Users] ([Id], [Name], [Password], [Email], [Address], [Roletype], [Created_Date]) VALUES (2015, N'Azlan Faisal', N'8776f108e247ab1e2b323042c049c266407c81fbad41bde1e8dfc1bb66fd267e', N'faisaladeelonlive@gmail.com', N'Gulberg Green,Rawalpindi', N'User', CAST(N'2025-05-31T18:10:54.210' AS DateTime))
+GO
+SET IDENTITY_INSERT [dbo].[Users] OFF
+GO
